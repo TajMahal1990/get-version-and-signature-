@@ -2,10 +2,12 @@ package com.example.myapplication
 
 
 
+import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.security.MessageDigest
@@ -13,10 +15,18 @@ import java.security.MessageDigest
 class MainActivity : AppCompatActivity() {
 
     private lateinit var infoTextView: TextView
+    private lateinit var buttonToSecondActivity: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // переход в secondActivity
+        buttonToSecondActivity = findViewById(R.id.btnToSecAct)
+        buttonToSecondActivity.setOnClickListener{
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
 
         // Инициализация TextView
         infoTextView = findViewById(R.id.infoTextView)

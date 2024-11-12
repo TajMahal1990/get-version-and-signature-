@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "receive version and GET SIGNING CERTIFICATES in bridgePay"
+rootProject.name = "bank receiver"
 include(":app")

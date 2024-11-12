@@ -2,15 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/white"
+
     android:padding="16dp">
 
     <TextView
         android:textStyle="bold"
         android:textSize="24sp"
         android:layout_gravity="center_horizontal"
-        android:text="Result all banks"
+        android:text="MainActivity"
         android:longClickable="true"
+        android:textColor="@color/black"
         android:focusable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +29,7 @@
 
         <TextView
             android:id="@+id/infoTextView"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textIsSelectable="true"
@@ -35,5 +40,15 @@
 
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnToSecAct"
+        android:layout_gravity="center_horizontal"
+        app:cornerRadius = "10dp"
+        android:backgroundTint="#1A76FF"
+        android:textColor="@color/white"
+        android:text="Переключится в SecondActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
