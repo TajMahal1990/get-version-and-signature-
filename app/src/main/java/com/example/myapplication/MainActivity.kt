@@ -1,12 +1,12 @@
 package com.example.myapplication
 
 
+
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.security.MessageDigest
 
@@ -21,22 +21,40 @@ class MainActivity : AppCompatActivity() {
         // Инициализация TextView
         infoTextView = findViewById(R.id.infoTextView)
 
-        // Пакет, который нужно проверить
-        val packageToCheck = "ru.otpbank.mobile"
+        // Список пакетов, которые нужно проверить
+        val packagesToCheck = listOf(
+            "ru.sberbankmobile" ,
+            "ru.vtb24.mobilebanking.android " ,
+            "ru.alfabank.mobile.android",
+            "com.idamob.tinkoff.android",
+            " ru.raiffeisennews",
+            "ru.bankuralsib.mb.android ",
+            "ru.otpbank.mobile",
+            " ua.otpbank.android",
+            "ru.lewis.dbo",
+            "com.yandex.bank"
+        )
 
-        // Проверка наличия приложения
-        if (isAppInstalled(packageToCheck)) {
-            val versionAndSignature = getAppInfo(packageToCheck)
-            if (versionAndSignature != null) {
-                val (version, signature) = versionAndSignature
-                // Выводим информацию в TextView
-                val resultText = "Версия: $version\nПодпись: $signature"
-                infoTextView.text = resultText
+        // Строим строку для вывода информации о приложениях
+        val resultBuilder = StringBuilder()
+
+        for (packageToCheck in packagesToCheck) {
+            // Проверка наличия приложения
+            if (isAppInstalled(packageToCheck)) {
+                val versionAndSignature = getAppInfo(packageToCheck)
+                if (versionAndSignature != null) {
+                    val (version, signature) = versionAndSignature
+                    // Добавляем информацию о приложении в строку
+                    resultBuilder.append("Пакет: $packageToCheck\nВерсия: $version\nПодпись: $signature\n\n")
+                }
+            } else {
+                // Если приложение не найдено, выводим это в строку
+                resultBuilder.append("Приложение с пакетом $packageToCheck не найдено\n\n")
             }
-        } else {
-            val noAppMessage = "Приложение с пакетом $packageToCheck не найдено"
-            infoTextView.text = noAppMessage
         }
+
+        // Выводим всю информацию в TextView
+        infoTextView.text = resultBuilder.toString()
     }
 
     // Метод для проверки наличия приложения на устройстве

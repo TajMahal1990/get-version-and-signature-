@@ -5,12 +5,35 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- TextView для вывода информации о приложении -->
     <TextView
-        android:id="@+id/infoTextView"
-        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Result all banks"
+        android:longClickable="true"
+        android:focusable="true"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Информация о приложении будет здесь"
-        android:textSize="16sp" />
+        android:layout_margin="16dp" />
+
+    <!-- ScrollView для прокрутки большого списка TextView -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/infoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:textSize="16sp"
+            android:padding="16dp" />
+
+
+    </ScrollView>
 
 </LinearLayout>
