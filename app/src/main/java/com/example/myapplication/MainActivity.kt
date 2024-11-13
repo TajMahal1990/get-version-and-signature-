@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         // Список пакетов, которые нужно проверить
         val packagesToCheck = listOf(
             "ru.sberbankmobile" ,
-            "ru.vtb24.mobilebanking.android " ,
+            "ru.vtb24.mobilebanking.android ",
             "ru.alfabank.mobile.android",
             "com.idamob.tinkoff.android",
             " ru.raiffeisennews",
@@ -42,32 +42,32 @@ class MainActivity : AppCompatActivity() {
             "ru.otpbank.mobile",
             " ua.otpbank.android",
             "ru.lewis.dbo",
-            "com.yandex.bank"
+            "com.yandex.bank",
         )
 
-        // Строим строку для вывода информации о приложениях
+        // строка о выводе иноформации о приложении
         val resultBuilder = StringBuilder()
 
         for (packageToCheck in packagesToCheck) {
-            // Проверка наличия приложения
+            // проверка наличия приложения
             if (isAppInstalled(packageToCheck)) {
                 val versionAndSignature = getAppInfo(packageToCheck)
                 if (versionAndSignature != null) {
                     val (version, signature) = versionAndSignature
-                    // Добавляем информацию о приложении в строку
+                    // добавляем информацию о приложении в строку
                     resultBuilder.append("Пакет: $packageToCheck\nВерсия: $version\nПодпись: $signature\n\n")
                 }
             } else {
-                // Если приложение не найдено, выводим это в строку
+                // eсли приложение не найдено, выводим это в строку
                 resultBuilder.append("Приложение с пакетом $packageToCheck не найдено\n\n")
             }
         }
 
-        // Выводим всю информацию в TextView
+        // выводим всю информацию в TextView
         infoTextView.text = resultBuilder.toString()
     }
 
-    // Метод для проверки наличия приложения на устройстве
+    // метод для проверки наличия приложения на устройстве
     private fun isAppInstalled(packageName: String): Boolean {
         val packageManager: PackageManager = packageManager
         return try {
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Метод для получения версии и подписи приложения
+    // метод для получения версии и подписи приложения
     private fun getAppInfo(packageName: String): Pair<String, String>? {
         return try {
             // Получаем информацию о пакете
